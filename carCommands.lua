@@ -1,5 +1,8 @@
+-- [ahahlol] - Car Bug Preview
+
 local player = game.Players.LocalPlayer
 local car = Workspace:FindFirstChild(player.Name .. "'s Car") or nil
+
 local isRag = false
 local bugging = false
 
@@ -26,18 +29,22 @@ local function fireEvents()
 end
 
 local function moveCarToTargetPlayer(targetPlayerName)
-local targetPlayer = findPlayerByNameAbbreviation(targetPlayerName)
+    local targetPlayer = findPlayerByNameAbbreviation(targetPlayerName)
 
-if targetPlayer then
-    bugging = true
-    while bugging do
-        if car and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-            car:SetPrimaryPartCFrame(targetPlayer.Character.HumanoidRootPart.CFrame)
-            fireEvents()
-        else
-            warn("Player Not Found!")
-            bugging = false
+    if targetPlayer then
+        bugging = true
+        while bugging do
+            if car and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                car:SetPrimaryPartCFrame(targetPlayer.Character.HumanoidRootPart.CFrame)
+                fireEvents()
+            else
+                warn("Player Not Found!")
+                bugging = false
+            end
+            task.wait(0.1)
         end
+    else
+        warn("Player Not Found!")
     end
 end
 
@@ -89,7 +96,7 @@ end
 
 local function teleportToPlayer(targetPlayerName)
     local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
-    print("Found Target")
+    print("Got Target")
     if isRag == true and targetPlayer and targetPlayer.Character then
         print("Has Met Character Checks")
         player.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
