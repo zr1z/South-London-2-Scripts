@@ -1,3 +1,4 @@
+-- Use at own risk. Not tested.
 local Player = game.Players.LocalPlayer.Character;
 
 local sFPS = setfpscap
