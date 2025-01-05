@@ -6,6 +6,7 @@ shared.toggle = true;
 
 for _, v in ipairs(Players:GetPlayers()) do
     if shared.toggle then
+        task.wait();
         local callStart = {v, "Starting"}
         local callEnd = {v, "EndCall"}
         
